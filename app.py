@@ -1,5 +1,7 @@
 from flask import Flask, send_file, render_template
 from pyppeteer import launch
+from pathlib import Path
+
 
 app = Flask(
     __name__,
@@ -10,10 +12,12 @@ app = Flask(
 caching = False
 baseurl = "https://8bb4e6978fc8.ngrok.io"
 default_content = "896701"
+Path("img").mkdir(parents=True, exist_ok=True)
 
 
 @app.route("/img/<string:buzz_id>.jpg")
 async def test(buzz_id):
+
     if caching:
         try:
             return send_file("img/" + buzz_id + ".jpg")
