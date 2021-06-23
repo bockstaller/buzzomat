@@ -19,7 +19,7 @@ if "caching" in os.environ:
 else:
     raise EnvironmentError
 
-if "basurl" in os.environ:
+if "baseurl" in os.environ:
     baseurl = os.getenv("baseurl")
 else:
     raise EnvironmentError
