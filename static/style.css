@@ -5,10 +5,12 @@ a{
 	color: #eee;
 	text-decoration: none;
 	cursor:pointer;
+  font-family: 'Roboto', sans-serif;
 }
 a:hover{
-	text-decoration: none;
+	text-decoration:underline;
 	color: white;
+  font-family: 'Roboto', sans-serif;
 }
 .clear {
     clear: both;
@@ -18,41 +20,74 @@ html {
     min-height: 100%;
 }
 body {
- background:rgb(240, 150, 150);
+
+
+ background-image: url("background/bialetti.jpg");
+ background-repeat: no-repeat;
+  background-size: cover;
 }
 b{
 	font-weight: 600;
+  font-family: 'Roboto', sans-serif;
 }
-
+p{
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+}
 
 /* Titulos
 -------------------------------------------------------------------------*/
-h1{
-	width: 100%;
-	font-size: 40px;
+
+
+.heading{
+  position:fixed;
+  margin-top: -80px;
+  width: 100%;
 }
 
+svg{
+  display: block;
+  margin: auto;
+}
 
+h1{
+  position:relative;
+  top:170px;
+  left:-10px;
+  transform: rotate(-15deg);
+	font-size: 70px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color:white;
+}
 /*
  * Casino
  */
 #casino {
+  position: fixed;
+  top: 15%;
+  width:100%;
+
+    /*
     border-top: 20px dotted rgb(180, 75, 119);
     background-color: rgb(240, 150, 150);
+    */
+
 }
 
-#casino .content:nth-child(1) {
-    text-align: center;
-    background: url('machine.png') no-repeat 50% 45px;
-    height: 580px;
+.machine{
+  margin:auto;
+  width:100%;
 }
+
 
 #casino .content > div {
     clear:both;
-    padding-top: 168px;
-    width: 700px;
-    margin: 0 auto;
+
+
+
 }
+
 
 .machineContainer{
 	background-color: #000;
@@ -61,25 +96,36 @@ h1{
 	height: 135px;
 }
 
+.slotmachine-bg{
+  position: absolute;
+  text-align: center;
+
+  width: 900px;
+  height: 400px;
+}
+
 .slotMachine{
 	width: 24%;
 	border: 2px solid #000;
 	height: 100px;
 	padding: 0px;
 	overflow: hidden;
-	display: inline-block;
+
 	text-align: center;
 	background-color: #ffffff;
 	cursor:pointer;
 }
 
 .btn-group-casino {
-    margin-top: 150px;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .btn-group-casino .btn {
     border: none;
     background-color: rgb(209, 79, 119);
+    width:auto;
 }
 .btn-group-casino .btn:hover, .btn-group-casino .btn:focus {
     background-color: rgb(180, 75, 119);
@@ -103,7 +149,7 @@ h1{
   -webkit-user-select: none;  /* Chrome all / Safari all */
   -moz-user-select: none;     /* Firefox all */
   -ms-user-select: none;      /* IE 10+ */
-  user-select: none;          /* Likely future */      
+  user-select: none;          /* Likely future */
 }
 .slotMachine .slot .inner{
   display:table-cell;
@@ -121,6 +167,26 @@ h1{
     20% { opacity: 1; }
     100% { opacity: .2;}
 }
+
+.slots{
+  position:relative;
+  display: flex;
+  justify-content: center;
+  width: 720px;
+  top:320px;
+  margin:auto;
+}
+
+.elements{
+  position:relative;
+  top:226px;
+  width: 720px;
+  margin:auto;
+
+
+}
+
+
 .handle {
   background:#333;
   border-radius:20px;
@@ -135,18 +201,18 @@ h1{
   height:60px !important;
   bottom:-50px;
 }
+
 .bullet {
   position:absolute;
-  top:82px;
   border-radius:100px;
-  width:26px;
-  height:26px;
-  background:rgb(238, 78, 115);
+  width:27px;
+  height:27px;
+  background:rgb(255, 219, 81);
   animation-name: blink;
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-fill-mode: both;
-  box-shadow:0px -2px 5px rgba(0,0,0,0.2),0px 0px 5px rgb(238, 78, 115);
+  box-shadow:0px -2px 5px rgba(0,0,0,0.2),0px 0px 5px rgb(255, 219, 81);
 }
 .bullet:nth-child(2) { animation-delay: .1s; }
 .bullet:nth-child(3) { animation-delay: .2s; }
@@ -165,3 +231,38 @@ h1{
 .bullet:nth-child(16) { animation-delay: 1.5s; }
 .bullet:nth-child(17) { animation-delay: 1.6s; }
 .bullet:nth-child(18) { animation-delay: 1.7s; }
+
+.notification{
+  position:fixed;
+  left:20%;
+  top:60%;
+  width:60%;
+  margin: auto;
+  text-align:center;
+  font-size:80%;
+  padding-bottom:20px;
+  font-family: 'Roboto Bold', sans-serif;
+  font-size:72px;
+  color: white;
+  font-weight: 700;
+  line-height: 100%;
+
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+
+}
+
+
+.footer{
+  position:fixed;
+  bottom:00%;
+  width:40%;
+  left:30%;
+  text-align:center;
+  font-size:80%;
+  padding-bottom:20px;
+  font-family: 'Roboto', sans-serif;
+  font-size:18px;
+  backdrop-filter: blur(2px);
+
+}

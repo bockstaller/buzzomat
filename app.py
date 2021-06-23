@@ -109,7 +109,7 @@ async def test(buzz_id):
         options={"args": ["--no-sandbox"]},
     )
     page = await browser.newPage()
-    await page.setViewport({"width": 1000, "height": 750})
+    await page.setViewport({"width": 700, "height": 600})
     url = "http://127.0.0.1:5000/" + buzz_id
     await page.goto(url)
     await page.screenshot({"path": "img/" + buzz_id + ".jpg"})

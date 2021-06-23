@@ -8,9 +8,14 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="static/jquery.slotmachine.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="static/style.css" type="text/css" media="screen" />
+<script type="text/javascript" src="static/content.js"></script>
+<script type="text/javascript" src="static/background.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="static/jquery.slotmachine.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 <meta property="og:url" content="{{url}}" />
 <meta property="og:image" content="{{image}}" />
 <meta property="og:title" content="{{title}}" />
@@ -18,248 +23,7 @@
 <meta property="og:description" content="{{description}}" />
 <meta property="og:locale" content="de_DE" />
 
-<script language="JavaScript">
-var parts1 = [
- "Die Reste von Gestern waren",
- "Das Kartoffelschälen ist",
- "Der Bannerklau ist",
- "Die Suppe des Küchenteams ist",
- "Jeder spirituelle Impuls war",
- "Das Rüsthaus ist",
- "Roverleiter*innen werden",
- "Die Zuschussliste ist",
- "Die Führungszeugnisse sind",
- "AstraZeneca ist",
- "Käse auf Nutella ist",
- "Stockbrot zum Abendessen ist",
- "Unwetter sind",
- "Die Sanis sind",
- "Robert Baden-Powell war",
- "Die Projektphase von rovervoco ist",
- "Glitzer ist",
- "Ostern ist",
- "Die Verschiebung von rovervoco auf 2022 war",
- "Mitbestimmung ist",
- "Die Spiritualität ist",
- "Die Zukunftsfrage ist",
- "Das haben wir schon immer so gemacht ist",
- "Dixi-Klos sind",
- "Attraktive aufeinander aufbauende Angebote sind",
- "Der Stiftungseuro ist",
- "Ein Woodbadgekurs ist",
- "Die Stufenordnungen sind",
- "Diözesanreferenten sind",
- "Bundesstufenunternehmen sind",
- "Ein Rover-Bayernlager ist",
- "Der Morgenimpuls ist",
- "Laurentia ist",
- "Der Ziegleipark ist",
- "Der Baufhof auf dem Lager ist",
- "Regionalzüge sind",
- "Die lustige Namenslokomotive ist",
- "Die Geschichte der kleinen Schraube ist",
- "Die Diözesen ohne Bezirke sind",
- "Nestlé ist",
- "Ein Gendersternchen ist",
- "Regional, saisonal und bio ist",
- "Die Mittendrin war",
- "Ein Mitternachtssnack ist",
- "Ein Arbeitskreis ist",
- "6,50€ prot Tag und Teilnehmer*in",
- "Flinke Hände, flinke Füße ist",
- "Jede Morgenrunde ist",
- "Westernohe ist",
- "Der BDKJ ist",
- "Die DPSG ist",
- "Die DPSG Facebookgruppe ist",
- "Die Discord-Rover sind",
- "Der Rover-BAK ist",
- "Der Rover-Discord ist",
- "Gruppenstunden sind",
- "Der Inhalt ist",
- "Lebenslanges Lernen ist",
- "Die Anmeldefrist ist",
- "Instagram ist",
- "Ein Hering ist",
- "Stil und Kultur sind",
- "Die vier rovervoco Auftakte werden",
- "Die Projektphase ist",
- "Die Kneipenstraße ist",
- "Das Betthupferl ist",
- "Die Projektphase wird",
- "Das Lagerfeuer ist",
- "Das Roverschutzgebiet ist",
- "Rot im Alltag ist",
- "Die Nachtruhe ist",
- "Roverrot ist",
- "Der Muttizettel ist",
- "Das Abschlusslager wird",
- "Die Projektleitung kann",
- "Die Roverstufe ist",
- "Stufenmitbestimmung ist",
-];
 
-var parts2 = [
- "am Ende des Regenbogens",
- "beim Stufenübertritt",
- "am Karfreitag",
- "in der Sickergrube",
- "auch mit drei Klötzchen",
- "mit oder ohne Gendersternchen",
- "während des Helfer*innenbriefings",
- "auch mit Präventionsschulung",
- "laut dem Protokoll",
- "trotz einiger Hindernisse",
- "unter anderem",
- "während einer Murmelpause",
- "in den Antragscafés",
- "durch und durch",
- "von morgens bis abends",
- "just in diesem Moment",
- "für immer und ewig",
- "wider Erwarten",
- "trozdem",
- "im Duschcontainer",
- "im Küchenzelt",
- "trozt aller Warnungen",
- "gut gemeint aber",
- "im Stiftungs-Café",
- "auf dem Weg zum Kirschbaum",
- "auf Leuchtfeuer",
- "wenn ich ehrlich bin",
- "auf dem Rovermoot",
- "auf dem REWE Parkplatz",
- "ohne den Frühbucherrabatt",
- "ohne wenn und aber",
- "im Sinne des Erfinders",
- "stückweise",
- "durch die Blume gesagt",
- "im Ziegleipark",
- "trotz heller Platzbeleuchtung",
- "mit WLAN am gesamten Platz",
- "seit rover.de",
- "konsequent eingesetzt",
- "im Grunde genommen",
- "im Wespennest",
- "bei aller Liebe",
- "ohne Übertreibung",
- "in anderen Kulturkreisen",
- "analytisch betrachtet",
- "sozusagen",
- "in einem Café",
- "völlig nüchtern betrachtet",
- "für weitere 5 Jahre",
- "irgendwie",
- "streng genommen",
- "ganz objektiv",
- "mitnichten"
- ];
-
-var parts3 = [
- "ein Hol- und Bringschuld",
- "eine Zumutung",
- "eine Schutzschulung",
- "ein großes Geschäft",
- "eine eierlegende Wollmilchsau",
- "ein Kompromis",
- "eine Offenbarung",
- "ein Konsens",
- "ein wesentlicher Einflussfaktor",
- "der Ursprung",
- "kein Hinderniss",
- "eine Motivationsabfrage",
- "ein Perspektivwechsel",
- "ein stufenspezifisches Angebot",
- "ein wohlüberlegtes Risiko",
- "eine wertvolle Investition",
- "eine Mutprobe",
- "eine Zahnputzparty",
- "ein weisendes Leuchtfeuer",
- "das größte Geheimnis",
- "die Jahresaktion",
- "die Drachen unserer Zeit",
- "ein Liebesbeweis",
- "eine Nacht unter freiem Himmel",
- "die Feuerprobe",
- "der Klebepunkt",
- "der Klodienst",
- "der Nahverkehr",
- "eine literarische Meisterleitung",
- "eine Methode",
- "eine Reflexion",
- "ein Wegweiser",
- "ein unüberwindbares Hindernis",
- "ein Fahrtenmesser",
- "mit absoluter Sicherheit",
- "eine Abspannleine",
- "ohne jeglichen Einfluss",
- "nicht das gelbe vom Ei",
- "eine Verschwörungstheorie",
- "ein Meisterwerk",
- "ein kleines Hindernis",
- "der Untergang",
- "das Sahnehäubchen",
- "der größte Feind",
- "auch ein dehnbarer Begriff",
- "nur ein Hype",
- "ein Meisterwerk",
- "ein roverrotees Accesoire",
- "ein schönes Scheitern",
- "ein Kothenkreuz",
- "eine Offenbarung",
- "die größte Innovation"
- ];
-
-var parts4 = [
- "für die Stufenordnungen",
- "für die Präventionsverantwortlichen",
- "für das Hygienkonzept",
- "für die Kneipenstraße",
- "für die Nachtwache",
- "für den Ecclesia Versicherungsdienst",
- "für den Nachwuchs im Verband",
- "für e.V. Mitglieder*innen",
- "für Joschka, Annka und Matthias",
- "für alle ehrenamtlichen Mitarbeitenden",
- "für die Stammesebene",
- "für das Bundesamt",
- "für die Bundesversammlung",
- "für den Satzungsausschuss",
- "für die Bischofskonferenz",
- "für die Mülltrennung",
- "für den Bundesvorstand",
- "für die NaMi",
- "für die Deutsche Bahn",
- "für die Region Nord-Ost",
- "für die Region Mitte",
- "für die Region Süd",
- "für die Region West",
- "für die Feedback-Empfänger*innen",
- "für Geschlechtergerechtigkeit",
- "für das Küchenteam",
- "am Morgen danach",
- "für Alt-Roverrunden",
- "für meinen Kater",
- "für die Bibergruppen",
- "für die Kommunikation",
- "für den Schankschluss",
- "für Inklusion",
- "für die Orga",
- "für die Projektleitung",
- "für uns alle Neuland",
- "für 100.000 Kinder und Jugendliche",
- "für Wölflinge",
- "für Jupfis",
- "für Pfadis",
- "für Rover*innen",
- "für die Stufenkonferenz",
- "für die Bundesreferenten",
- "für die Zukunft",
- "für alles",
- "für einen Jugendverband",
- "für den BDKJ",
- ];
-</script>
 
 <!-- Matomo -->
 <script type="text/javascript">
@@ -282,46 +46,73 @@ var parts4 = [
 </head>
 
 <body>
-		<div id="casino" style="padding-top:50px;">
+    <div class="heading">
+
+        <h1> <b>voco</b>-o-mat </h1>
+        <svg width="700" height="300">
+          <image xlink:href="static/RV_bubble_dunkelgelb.svg" width="700" height="300"/>
+        </svg>
+      </div>
+    </div>
+		<div id="casino" >
 			<div class="content">
-				<h1>Buzz-o-Mat</h1>
+				<div style="position:fixed" class="machine">
 
-				<div style="position:relative">
-				  <div style="width: 46px; height: 152px; position: absolute; right: -120px; top: 10px; cursor:pointer" id="handleBtn"><div style="width:100%;height:100%" class="handle sparkle"></div></div>
+          <div class="elements">
+            <div style="width: 46px; height: 152px; position: absolute; right: -118px; top: -70px; cursor:pointer" id="handleBtn"><div style="width:100%;height:100%" class="handle sparkle"></div></div>
+            <div class="bullet" style="left:56px"></div>
+            <div class="bullet" style="left:92px"></div>
+            <div class="bullet" style="left:128px"></div>
+            <div class="bullet" style="left:166px"></div>
+            <div class="bullet" style="left:202px"></div>
+            <div class="bullet" style="left:238px"></div>
+            <div class="bullet" style="left:275px"></div>
+            <div class="bullet" style="left:312px"></div>
+            <div class="bullet" style="left:348px"></div>
+            <div class="bullet" style="left:385px"></div>
+            <div class="bullet" style="left:422px"></div>
+            <div class="bullet" style="left:458px"></div>
+            <div class="bullet" style="left:496px"></div>
+            <div class="bullet" style="left:532px"></div>
+            <div class="bullet" style="left:568px"></div>
+            <div class="bullet" style="left:604px"></div>
+            <div class="bullet" style="left:642px"></div>
+          </div>
 
-				  <div class="bullet" style="left:50px"></div>
-				  <div class="bullet" style="left:86px"></div>
-				  <div class="bullet" style="left:122px"></div>
-				  <div class="bullet" style="left:158px"></div>
-				  <div class="bullet" style="left:194px"></div>
-				  <div class="bullet" style="left:230px"></div>
-				  <div class="bullet" style="left:267px"></div>
-				  <div class="bullet" style="left:303px"></div>
-				  <div class="bullet" style="left:339px"></div>
-				  <div class="bullet" style="left:375px"></div>
-				  <div class="bullet" style="left:411px"></div>
-				  <div class="bullet" style="left:447px"></div>
-				  <div class="bullet" style="left:484px"></div>
-				  <div class="bullet" style="left:520px"></div>
-				  <div class="bullet" style="left:556px"></div>
-				  <div class="bullet" style="left:592px"></div>
-				  <div class="bullet" style="left:629px"></div>
+          <div class="slots">
+            <div id="casino1" class="slotMachine"></div>
+            <div id="casino2" class="slotMachine"></div>
+            <div id="casino3" class="slotMachine"></div>
+            <div id="casino4" class="slotMachine"></div>
+          </div>
 
-					<div id="casino1" class="slotMachine"></div>
-					<div id="casino2" class="slotMachine"></div>
-					<div id="casino3" class="slotMachine"></div>
-					<div id="casino4" class="slotMachine"></div>
 
-					<div class="btn-group btn-group-justified btn-group-casino" role="group">
-						<div id="slotMachineButtonCopyText" type="button" class="btn btn-primary btn-lg">Spruch kopieren</div>
-						<div id="slotMachineButtonCopyURL" type="button" class="btn btn-primary btn-lg">Perma-Link kopieren</div>
-						<a id="slotMachineButtonTwitter" target="_blank" type="button" class="btn btn-primary btn-lg twitter-share-button">Spruch twittern</a>
-					</div>
-				</div>
+          <svg width="950" height="500">
+            <image xlink:href="static/machine.svg" width="950" height="500"/>
+          </svg>
+
+          <div class="btn-group btn-group-justified btn-group-casino" role="group">
+            <div id="slotMachineButtonCopyText" type="button" class="btn btn-primary btn-lg">Spruch kopieren</div>
+            <div id="slotMachineButtonCopyURL" type="button" class="btn btn-primary btn-lg">Perma-Link kopieren</div>
+            <a id="slotMachineButtonTwitter" target="_blank" type="button" class="btn btn-primary btn-lg twitter-share-button">Spruch twittern</a>
+          </div>
+        </div>
+
 
 			</div>
-			<div class="clearfix"></div>
+
 		</div>
+
+    <div class="notification">
+      Wir suchen für rover<b>voco</b> noch Café und Kneipenteams. Alle Infos gibt es auf <a href="https://voco.rover.de" target="_blank">voco.rover.de</a>
+    </div>
+
+    <div class="footer">
+      Ein Projekt von dem <b>rover</b>voco Vorbereitungsteam</br>
+      gebaut mit dem <a href="https://github.com/gitmh/buzzomat" target="_blank">Buzzomat</a> </br>
+      <a href="https://dpsg.de/impressum" target="_blank">Impressum</a> </br>
+    </div>
+
 		<script>
 			$(document).ready(function(){
 			  for(var i=0; i < parts1.length; i++)
@@ -559,7 +350,7 @@ var parts4 = [
             (machine4.active)
            );
 
-           window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(text+' #lernbuzz '+window.location.href),'twitter','width=500,height=350');
+           window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(text+' #vocomat #dpsg '+window.location.href),'twitter','width=500,height=350');
         });
 
         $(document).keydown(function (e){
@@ -572,6 +363,15 @@ var parts4 = [
           }
         });
 
+        setTimeout(function () {
+            var t = [];
+            t.push(parts1[machine1.active]);
+            t.push(parts2[machine2.active]);
+            t.push(parts3[machine3.active]);
+            t.push(parts4[machine4.active]);
+            console.log(t);
+        }, 0);
+
 
 
 			});
@@ -581,7 +381,7 @@ var parts4 = [
 		</script>
 
 
-    <div style="text-align:center;font-size:80%;padding-bottom:20px">Ein Projekt von <a href="http://www.joeran.de/lernbuzz/" target="_blabk">J&K</a> und der <a href="http://phsz.ch" target="_blank">Pädagogischen Hochschule Schwyz</a></br> gebaut mit <a href="https://github.com/josex2r/jQuery-SlotMachine" target="_blank">jQuery-SlotMachine</a></div>
+
 
 </body>
 </html>
