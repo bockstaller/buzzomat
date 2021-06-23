@@ -6,6 +6,7 @@ from sentry_sdk.integrations.flask import FlaskIntegration
 from pyppeteer import launch
 from pathlib import Path
 
+
 from dotenv import load_dotenv
 import beeline
 from beeline.middleware.flask import HoneyMiddleware
@@ -58,13 +59,29 @@ sentry_sdk.init(
 )
 
 
-beeline.init(
-    writekey=beeline_api_key,
-    # The name of your app is a good choice to start with
-    dataset="vocomat",
-    service_name="vocomat-app",
-    debug=False,  # defaults to False. if True, data doesn't get sent to Honeycomb
-)
+if os.getenv("FLASK_ENV") != "development":
+    from uwsgidecorators import postfork
+
+    @postfork
+    def init_beeline():
+
+        beeline.init(
+            writekey=beeline_api_key,
+            # The name of your app is a good choice to start with
+            dataset="vocomat",
+            service_name="vocomat-app",
+            debug=False,  # defaults to False. if True, data doesn't get sent to Honeycomb
+        )
+
+
+else:
+    beeline.init(
+        writekey=beeline_api_key,
+        # The name of your app is a good choice to start with
+        dataset="vocomat",
+        service_name="vocomat-app",
+        debug=False,  # defaults to False. if True, data doesn't get sent to Honeycomb
+    )
 
 
 app = Flask(
