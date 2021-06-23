@@ -14,11 +14,30 @@ import os
 
 load_dotenv()
 
-caching = os.getenv("caching")
-baseurl = os.getenv("baseurl")
-default_content = os.getenv("default_content")
-beeline_api_key = os.getenv("beeline_api_key")
-dsn = os.getenv("dsn")
+if "caching" in os.environ:
+    caching = os.getenv("caching")
+else:
+    raise EnvironmentError
+
+if "basurl" in os.environ:
+    baseurl = os.getenv("baseurl")
+else:
+    raise EnvironmentError
+
+if "default_content" in os.environ:
+    default_content = os.getenv("default_content")
+else:
+    raise EnvironmentError
+
+if "beeline_api_key" in os.environ:
+    beeline_api_key = os.getenv("beeline_api_key")
+else:
+    raise EnvironmentError
+
+if "dsn" in os.environ:
+    dsn = os.getenv("dsn")
+else:
+    raise EnvironmentError
 
 
 Path("img").mkdir(parents=True, exist_ok=True)
@@ -66,7 +85,12 @@ async def test(buzz_id):
         except:
             pass
 
-    browser = await launch(handleSIGINT=False, handleSIGTERM=False, handleSIGHUP=False)
+    browser = await launch(
+        handleSIGINT=False,
+        handleSIGTERM=False,
+        handleSIGHUP=False,
+        options={"args": ["--no-sandbox"]},
+    )
     page = await browser.newPage()
     await page.setViewport({"width": 1000, "height": 750})
     url = "http://127.0.0.1:5000/" + buzz_id
