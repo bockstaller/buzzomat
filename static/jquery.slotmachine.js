@@ -11,14 +11,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var pluginName = 'slotMachine',
         defaults = {
-        active: 0,
-        delay: 200,
-        auto: false,
-        spins: 5,
-        randomize: null,
-        complete: null,
-        stopHidden: true,
-        direction: 'up' },
+            active: 0,
+            delay: 200,
+            auto: false,
+            spins: 5,
+            randomize: null,
+            complete: null,
+            stopHidden: true,
+            direction: 'up'
+        },
         FX_NO_TRANSITION = 'slotMachineNoTransition',
         FX_FAST = 'slotMachineBlurFast',
         FX_NORMAL = 'slotMachineBlurMedium',
@@ -215,15 +216,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 var _raf = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame,
                     startTime = new Date().getTime(),
                     _rafHandler = function _rafHandler() {
-                    var drawStart = new Date().getTime(),
-                        diff = drawStart - startTime;
+                        var drawStart = new Date().getTime(),
+                            diff = drawStart - startTime;
 
-                    if (diff < timeout) {
-                        _raf(_rafHandler);
-                    } else if (typeof cb === 'function') {
-                        cb();
-                    }
-                };
+                        if (diff < timeout) {
+                            _raf(_rafHandler);
+                        } else if (typeof cb === 'function') {
+                            cb();
+                        }
+                    };
 
                 _raf(_rafHandler);
             }
@@ -271,6 +272,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             key: 'next',
             value: function next() {
                 this.futureActive = this.nextIndex;
+                this.running = true;
+                this.stop();
+
+                return this.futureActive;
+            }
+        }, {
+            key: 'activate',
+            value: function activate() {
                 this.running = true;
                 this.stop();
 
