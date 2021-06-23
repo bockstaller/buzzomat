@@ -3,16 +3,18 @@ from pyppeteer import launch
 from pathlib import Path
 
 
+caching = False
+baseurl = "https://8bb4e6978fc8.ngrok.io"
+default_content = "896701"
+
+Path("img").mkdir(parents=True, exist_ok=True)
+
+
 app = Flask(
     __name__,
     static_url_path="/static",
     static_folder="static",
 )
-
-caching = False
-baseurl = "https://8bb4e6978fc8.ngrok.io"
-default_content = "896701"
-Path("img").mkdir(parents=True, exist_ok=True)
 
 
 @app.route("/img/<string:buzz_id>.jpg")
