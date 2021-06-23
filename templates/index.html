@@ -240,26 +240,23 @@ var parts4 = [
  ];
 </script>
 
-<script>
-
- /*
-    var link = document.createElement('meta');
-    link.setAttribute('property', 'og:url');
-    link.content = document.location;
-    document.getElementsByTagName('head')[0].appendChild(link);
-
-    var pathArray = window.location.pathname.split('/');
-    h = pathArray[1];
-    image_link = window.location.origin + "/img/" + h + ".jpg"
-    console.log(image_link);
-
-
-    var link = document.createElement('meta');
-    link.setAttribute('property', 'og:image');
-    link.content = image_link;
-    document.getElementsByTagName('head')[0].appendChild(link);
-    */
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setCookieDomain", "*.voco.rover.de"]);
+  _paq.push(["setDoNotTrack", true]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//stats.rover.de/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '11']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
 </script>
+<!-- End Matomo Code -->
 
 </head>
 

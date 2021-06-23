@@ -1,13 +1,51 @@
 from flask import Flask, send_file, render_template
+import sentry_sdk
+
+from sentry_sdk.integrations.flask import FlaskIntegration
+
 from pyppeteer import launch
 from pathlib import Path
 
+from dotenv import load_dotenv
+import beeline
+from beeline.middleware.flask import HoneyMiddleware
+import os
 
-caching = False
-baseurl = "https://8bb4e6978fc8.ngrok.io"
-default_content = "896701"
+
+load_dotenv()
+
+caching = os.getenv("caching")
+baseurl = os.getenv("baseurl")
+default_content = os.getenv("default_content")
+beeline_api_key = os.getenv("beeline_api_key")
+dsn = os.getenv("dsn")
+
 
 Path("img").mkdir(parents=True, exist_ok=True)
+
+
+sentry_sdk.init(
+    dsn=dsn,
+    integrations=[FlaskIntegration()],
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+    # By default the SDK will try to use the SENTRY_RELEASE
+    # environment variable, or infer a git commit
+    # SHA as release, however you may want to set
+    # something more human-readable.
+    # release="myapp@1.0.0",
+)
+
+
+beeline.init(
+    writekey=beeline_api_key,
+    # The name of your app is a good choice to start with
+    dataset="vocomat",
+    service_name="vocomat-app",
+    debug=False,  # defaults to False. if True, data doesn't get sent to Honeycomb
+)
 
 
 app = Flask(
@@ -15,10 +53,12 @@ app = Flask(
     static_url_path="/static",
     static_folder="static",
 )
+HoneyMiddleware(app, db_events=False)
 
 
 @app.route("/img/<string:buzz_id>.jpg")
 async def test(buzz_id):
+    beeline.add_context({"buzz_id": buzz_id})
 
     if caching:
         try:
@@ -38,6 +78,9 @@ async def test(buzz_id):
 
 @app.route("/<string:buzz_id>")
 def index(buzz_id):
+    beeline.add_context({"buzz_id": buzz_id})
+    print(baseurl)
+    print(buzz_id)
     url = baseurl + "/" + buzz_id
     image = baseurl + "/img/" + buzz_id + ".jpg"
     title = "voco-o-mat"
@@ -49,4 +92,7 @@ def index(buzz_id):
 
 @app.route("/")
 def index_empty():
+    beeline.add_context({"buzz_id": " "})
+    print(default_content)
+
     return index(default_content)
