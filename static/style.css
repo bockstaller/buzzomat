@@ -25,19 +25,24 @@ p{
 }
 html {
 
+
 }
 body {
-  height:100vh;
+  height:100%;
+  width:100%;
+  padding-left: env(safe-area-inset-left);
+
+  padding-right: env(safe-area-inset-right);
+  background-color: rgb(245, 173, 186);
 
 }
 
 .background{
-  background-color: rgb(245, 173, 186);
+
   background-repeat: no-repeat;
   background-size: cover;
   position:fixed;
-  width: 100vw;
-  height: 100vh;
+  height: 100%;
   left:0;
   top:0;
   z-index:-100;
