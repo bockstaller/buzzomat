@@ -115,7 +115,6 @@
 		<script>
         function set_background(text, image) {
           $('div.notification:first').html(text)
-          const cssstr = "'background-image', url("+image+")"
 
           $('div.background:first').css('background-image', 'none');
           if (image != ""){
@@ -139,6 +138,7 @@
                   const randomText = background.texts[Math.floor(Math.random() * background.texts.length)];
                   const randomImage = background.images[Math.floor(Math.random() * background.images.length)];
                   set_background(randomText, randomImage);
+                  return;
                 }
               }
             }
