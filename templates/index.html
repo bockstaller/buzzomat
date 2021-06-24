@@ -45,71 +45,75 @@
 </head>
 
 <body>
-  <div class="background" style="transition: all 10s 1s ease; background-color: rgb(245, 173, 186);">
-    <div class="heading">
-
-        <h1> <b>voco</b>-o-mat </h1>
-        <svg width="700" height="300">
-          <image xlink:href="static/RV_bubble_dunkelgelb.svg" width="700" height="300"/>
-        </svg>
-    </div>
-		<div id="casino" >
-			<div class="content">
-				<div style="position:fixed" class="machine">
-
-          <div class="elements">
-            <div style="width: 46px; height: 152px; position: absolute; right: -118px; top: -70px; cursor:pointer" id="handleBtn"><div style="width:100%;height:100%" class="handle sparkle"></div></div>
-            <div class="bullet" style="left:56px"></div>
-            <div class="bullet" style="left:92px"></div>
-            <div class="bullet" style="left:128px"></div>
-            <div class="bullet" style="left:166px"></div>
-            <div class="bullet" style="left:202px"></div>
-            <div class="bullet" style="left:238px"></div>
-            <div class="bullet" style="left:275px"></div>
-            <div class="bullet" style="left:312px"></div>
-            <div class="bullet" style="left:348px"></div>
-            <div class="bullet" style="left:385px"></div>
-            <div class="bullet" style="left:422px"></div>
-            <div class="bullet" style="left:458px"></div>
-            <div class="bullet" style="left:496px"></div>
-            <div class="bullet" style="left:532px"></div>
-            <div class="bullet" style="left:568px"></div>
-            <div class="bullet" style="left:604px"></div>
-            <div class="bullet" style="left:642px"></div>
-          </div>
-
-          <div class="slots">
-            <div id="casino1" class="slotMachine"></div>
-            <div id="casino2" class="slotMachine"></div>
-            <div id="casino3" class="slotMachine"></div>
-            <div id="casino4" class="slotMachine"></div>
-          </div>
-
-
-          <svg width="950" height="500">
-            <image xlink:href="static/machine.svg" width="950" height="500"/>
+  <div class="background">
+  </div>
+    <div class="wrapper">
+      <div class="heading">
+          <h1> <b>voco</b>-o-mat </h1>
+          <svg width="700" height="300">
+            <image xlink:href="static/RV_bubble_dunkelgelb.svg" width="700" height="300"/>
           </svg>
+      </div>
+      <div id="casino" >
+        <div class="content">
+          <div style="position:relative" class="machine">
 
-          <div class="btn-group btn-group-justified btn-group-casino" role="group">
-            <div id="slotMachineButtonCopyText" type="button" class="btn btn-primary btn-lg">Spruch kopieren</div>
-            <div id="slotMachineButtonCopyURL" type="button" class="btn btn-primary btn-lg">Perma-Link kopieren</div>
-            <a id="slotMachineButtonTwitter" target="_blank" type="button" class="btn btn-primary btn-lg twitter-share-button">Spruch twittern</a>
+            <div class="elements">
+              <div style="width: 46px; height: 152px; position: absolute; right: -118px; top: -70px; cursor:pointer" id="handleBtn"><div style="width:100%;height:100%" class="handle sparkle"></div></div>
+              <div class="bullet" style="left:56px"></div>
+              <div class="bullet" style="left:92px"></div>
+              <div class="bullet" style="left:128px"></div>
+              <div class="bullet" style="left:166px"></div>
+              <div class="bullet" style="left:202px"></div>
+              <div class="bullet" style="left:238px"></div>
+              <div class="bullet" style="left:275px"></div>
+              <div class="bullet" style="left:312px"></div>
+              <div class="bullet" style="left:348px"></div>
+              <div class="bullet" style="left:385px"></div>
+              <div class="bullet" style="left:422px"></div>
+              <div class="bullet" style="left:458px"></div>
+              <div class="bullet" style="left:496px"></div>
+              <div class="bullet" style="left:532px"></div>
+              <div class="bullet" style="left:568px"></div>
+              <div class="bullet" style="left:604px"></div>
+              <div class="bullet" style="left:642px"></div>
+            </div>
+
+            <div class="slots">
+              <div id="casino1" class="slotMachine"></div>
+              <div id="casino2" class="slotMachine"></div>
+              <div id="casino3" class="slotMachine"></div>
+              <div id="casino4" class="slotMachine"></div>
+            </div>
+
+
+            <svg width="950" height="500">
+              <image xlink:href="static/machine.svg" width="950" height="500"/>
+            </svg>
+
+            <div class="btn-group btn-group-justified btn-group-casino" role="group">
+              <div id="slotMachineButtonCopyText" type="button" class="btn btn-primary btn-lg">Spruch kopieren</div>
+              <div id="slotMachineButtonCopyURL" type="button" class="btn btn-primary btn-lg">Perma-Link kopieren</div>
+              <a id="slotMachineButtonTwitter" target="_blank" type="button" class="btn btn-primary btn-lg twitter-share-button">Spruch twittern</a>
+            </div>
           </div>
+
+
         </div>
+      </div>
 
+      <div class="notification">
 
-			</div>
-
-		</div>
-
-    <div class="notification">
-
+      </div>
     </div>
-
+    <div class="push"></div>
     <div class="footer">
       Ein Projekt von dem <b>rover</b>voco Vorbereitungsteam</br>
       gebaut mit dem <a href="https://github.com/gitmh/buzzomat" target="_blank">Buzzomat</a> </br>
       <a href="https://dpsg.de/impressum" target="_blank">Impressum</a> </br>
+    </div>
+
+    <div class="clear">
     </div>
 
 		<script>
@@ -130,7 +134,7 @@
             t.push(parts4[machine4.active]);
             var text_1 = t.join(" ").replace(/&shy;/g,"");
 
-            set_background("", "");
+            set_background("<a href=https://voco.rover.de> Für rover<b>voco</b> anmelden! </a><br> Das Bundesunternehmen für die Roverstufe 2022", "");
 
             for (const background of backgrounds) {
               for(const key of background.keys){
@@ -409,7 +413,7 @@
 		</script>
 
 
-  </div>
+
 
 </body>
 </html>

@@ -182,7 +182,7 @@ var parts3 = [
     "auch ein dehnbarer Begriff",
     "nur ein Hype",
     "ein Meisterwerk",
-    "ein roverrotees Accesoire",
+    "ein roverrotes Accesoire",
     "ein schönes Scheitern",
     "ein Kothenkreuz",
     "eine Offenbarung",

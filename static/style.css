@@ -2,7 +2,7 @@
 /* CSS Document */
 
 a{
-	color: #eee;
+	color: #fff;
 	text-decoration: none;
 	cursor:pointer;
   font-family: 'Roboto', sans-serif;
@@ -12,24 +12,6 @@ a:hover{
 	color: white;
   font-family: 'Roboto', sans-serif;
 }
-.clear {
-    clear: both;
-}
-html {
-    position: relative;
-    min-height: 100%;
-}
-body {
-
-}
-
-.background{
-
-  background-repeat: no-repeat;
-  background-size: cover;
-  height:100vh;
-}
-
 b{
 	font-weight: 600;
   font-family: 'Roboto', sans-serif;
@@ -38,14 +20,49 @@ p{
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
 }
+.clear {
+    clear: both;
+}
+html {
+
+}
+body {
+  height:100vh;
+
+}
+
+.background{
+  background-color: rgb(245, 173, 186);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position:fixed;
+  width: 100vw;
+  height: 100vh;
+  left:0;
+  top:0;
+  z-index:-100;
+}
+
+.wrapper {
+  min-height: 100%;
+
+  /* Equal to height of footer */
+  /* But also accounting for potential margin-bottom of last child */
+  margin-bottom: 00px;
+}
+.footer,
+.push {
+  height: 100px;
+}
+
 
 /* Titulos
 -------------------------------------------------------------------------*/
 
 
 .heading{
-  position:fixed;
-  margin-top: -80px;
+  position:relative;
+  top: -80px;
   width: 100%;
 }
 
@@ -68,15 +85,9 @@ h1{
  * Casino
  */
 #casino {
-  position: fixed;
-  top: 15%;
+  position: relative;
+  top: -200px;
   width:100%;
-
-    /*
-    border-top: 20px dotted rgb(180, 75, 119);
-    background-color: rgb(240, 150, 150);
-    */
-
 }
 
 .machine{
@@ -86,9 +97,6 @@ h1{
 
 
 #casino .content > div {
-    clear:both;
-
-
 
 }
 
@@ -96,12 +104,12 @@ h1{
 .machineContainer{
 	background-color: #000;
 	padding: 5px 1px 5px 1px;
-	overflow: hidden;
+
 	height: 135px;
 }
 
 .slotmachine-bg{
-  position: absolute;
+  position: relative;
   text-align: center;
 
   width: 900px;
@@ -113,7 +121,7 @@ h1{
 	border: 2px solid #000;
 	height: 100px;
 	padding: 0px;
-	overflow: hidden;
+
 
 	text-align: center;
 	background-color: #ffffff;
@@ -237,9 +245,9 @@ h1{
 .bullet:nth-child(18) { animation-delay: 1.7s; }
 
 .notification{
-  position:fixed;
-  left:20%;
-  top:60%;
+  position:relative;
+
+  top:-100px;
   width:60%;
   margin: auto;
   text-align:center;
@@ -256,12 +264,12 @@ h1{
 
 }
 
-
 .footer{
-  position:fixed;
-  bottom:00%;
+  position:relative;
+
   width:40%;
-  left:30%;
+
+  margin:auto;
   text-align:center;
   font-size:80%;
   padding-bottom:20px;
