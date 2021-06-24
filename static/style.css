@@ -30,9 +30,7 @@ html {
 body {
   height:100%;
   width:100%;
-  padding-left: env(safe-area-inset-left);
 
-  padding-right: env(safe-area-inset-right);
   background-color: rgb(245, 173, 186);
 
 }
