@@ -6,7 +6,7 @@ var backgrounds = [
     },
     {
         keys: ["Mülltrennung", "Orga", "Sanis", "Bauhof", "Helfer", "Duschcontainer", "Küchenzelt", "Nachtwache"],
-        texts: [""],
+        texts: ["Nicht mehr im Roveralter? <a href=voco.rover.de>Komm als Helfer*in ins Team.</a>"],
         images: [""]
     },
     {
@@ -55,7 +55,7 @@ var backgrounds = [
         images: ["static/background/zelte_dampf.jpg", "static/background/zelte_dampf_2.jpg"]
     },
     {
-        keys: ["Kommunikation", "Neuland"],
+        keys: ["Kommunikation", "Neuland", "Instagram"],
         texts: ["Du kannst filmen/fotografieren/gestalten? Ab als Helfer*in ins Kommunikationsteam!"],
         images: ["static/background/marie_kamera.jpg"]
     },

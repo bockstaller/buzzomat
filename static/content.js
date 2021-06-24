@@ -33,7 +33,7 @@ var parts1 = [
     "Der Morgenimpuls ist",
     "Laurentia ist",
     "Der Ziegeleipark ist",
-    "Der Baufhof auf dem Lager ist",
+    "Der Bauhof auf dem Lager ist",
     "Regionalzüge sind",
     "Die lustige Namenslokomotive ist",
     "Die Geschichte der kleinen Schraube ist",
