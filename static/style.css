@@ -21,11 +21,15 @@ html {
 }
 body {
 
-
- background-image: url("background/bialetti.jpg");
- background-repeat: no-repeat;
-  background-size: cover;
 }
+
+.background{
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:100vh;
+}
+
 b{
 	font-weight: 600;
   font-family: 'Roboto', sans-serif;
@@ -240,7 +244,7 @@ h1{
   margin: auto;
   text-align:center;
   font-size:80%;
-  padding-bottom:20px;
+
   font-family: 'Roboto Bold', sans-serif;
   font-size:72px;
   color: white;

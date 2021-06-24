@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="static/jquery.slotmachine.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="static/style.css" type="text/css" media="screen" />
 <script type="text/javascript" src="static/content.js"></script>
+
 <script type="text/javascript" src="static/background.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="static/jquery.slotmachine.js"></script>
@@ -22,8 +23,6 @@
 <meta property="og:type" content="website" />
 <meta property="og:description" content="{{description}}" />
 <meta property="og:locale" content="de_DE" />
-
-
 
 <!-- Matomo -->
 <script type="text/javascript">
@@ -46,13 +45,13 @@
 </head>
 
 <body>
+  <div class="background" style="transition: all 10s 1s ease; background-color: rgb(245, 173, 186);">
     <div class="heading">
 
         <h1> <b>voco</b>-o-mat </h1>
         <svg width="700" height="300">
           <image xlink:href="static/RV_bubble_dunkelgelb.svg" width="700" height="300"/>
         </svg>
-      </div>
     </div>
 		<div id="casino" >
 			<div class="content">
@@ -104,7 +103,7 @@
 		</div>
 
     <div class="notification">
-      Wir suchen für rover<b>voco</b> noch Café und Kneipenteams. Alle Infos gibt es auf <a href="https://voco.rover.de" target="_blank">voco.rover.de</a>
+
     </div>
 
     <div class="footer">
@@ -114,6 +113,40 @@
     </div>
 
 		<script>
+        function set_background(text, image) {
+          $('div.notification:first').html(text)
+          const cssstr = "'background-image', url("+image+")"
+
+          $('div.background:first').css('background-image', 'none');
+          if (image != ""){
+            $('div.background:first').css('background-image', 'url(' + image + ')');
+          }
+        };
+
+        function update_background(machine1, machine2, machine3, machine4) {
+            var t = [];
+            t.push(parts1[machine1.active]);
+            t.push(parts2[machine2.active]);
+            t.push(parts3[machine3.active]);
+            t.push(parts4[machine4.active]);
+            var text_1 = t.join(" ").replace(/&shy;/g,"");
+
+            set_background("", "");
+
+            for (const background of backgrounds) {
+              for(const key of background.keys){
+                if (text_1.includes(key)){
+                  const randomText = background.texts[Math.floor(Math.random() * background.texts.length)];
+                  const randomImage = background.images[Math.floor(Math.random() * background.images.length)];
+                  set_background(randomText, randomImage);
+                }
+              }
+            }
+
+
+        };
+
+
 			$(document).ready(function(){
 			  for(var i=0; i < parts1.length; i++)
   			  $('#casino1').append('<div class="slot slot'+(i+1)+'"><div class="inner">'+parts1[i]+'</div></div>');
@@ -230,6 +263,7 @@
            }
            foundHash = link;
            setTimeout(function(){ waitForStop = false; },1000);
+           update_background(machine1, machine2, machine3, machine4);
 					},500);
         }
 
@@ -239,7 +273,7 @@
 				});
 
         var foundHash = "";
-        setTimeout(function() {
+        setInterval(function() {
          var pathArray = window.location.pathname.split('/');
          h = pathArray[1];
 
@@ -296,8 +330,9 @@
            machine2.settings.delay=300;
            machine3.settings.delay=300;
            machine4.settings.delay=300;
+           update_background(machine1, machine2, machine3, machine4);
          }
-        }, 0);
+        }, 100);
 
 
 
@@ -363,14 +398,7 @@
           }
         });
 
-        setTimeout(function () {
-            var t = [];
-            t.push(parts1[machine1.active]);
-            t.push(parts2[machine2.active]);
-            t.push(parts3[machine3.active]);
-            t.push(parts4[machine4.active]);
-            console.log(t);
-        }, 0);
+
 
 
 
@@ -381,7 +409,7 @@
 		</script>
 
 
-
+  </div>
 
 </body>
 </html>

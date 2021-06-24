@@ -28,11 +28,11 @@ var parts1 = [
     "Ein Woodbadgekurs ist",
     "Die Stufenordnungen sind",
     "Diözesanreferenten sind",
-    "Bundesstufen-<br>unternehmen sind",
+    "Bundesstufen&shy;unternehmen sind",
     "Ein Rover-Bayernlager ist",
     "Der Morgenimpuls ist",
     "Laurentia ist",
-    "Der Ziegleipark ist",
+    "Der Ziegeleipark ist",
     "Der Baufhof auf dem Lager ist",
     "Regionalzüge sind",
     "Die lustige Namenslokomotive ist",
@@ -75,7 +75,7 @@ var parts1 = [
     "Das Abschlusslager wird",
     "Die Projektleitung kann",
     "Die Roverstufe ist",
-    "Stufen-<br>mitbestimmung ist",
+    "Stufen&shy;mitbestimmung ist",
 ];
 
 var parts2 = [
@@ -191,7 +191,7 @@ var parts3 = [
 
 var parts4 = [
     "für die Stufenordnungen",
-    "für die Präventions-<br>verantwortlichen",
+    "für die Präventions&shy;verantwortlichen",
     "für das Hygienkonzept",
     "für die Kneipenstraße",
     "für die Nachtwache",
@@ -202,9 +202,9 @@ var parts4 = [
     "für alle ehrenamtlichen Mitarbeitenden",
     "für die Stammesebene",
     "für das Bundesamt",
-    "für die Bundes-<br>versammlung",
-    "für den Satzungs-<br>ausschuss",
-    "für die Bischofs-<br>konferenz",
+    "für die Bundes&shy;versammlung",
+    "für den Satzungs&shy;ausschuss",
+    "für die Bischofs&shy;konferenz",
     "für die Mülltrennung",
     "für den Bundesvorstand",
     "für die NaMi",
@@ -214,7 +214,7 @@ var parts4 = [
     "für die Region Süd",
     "für die Region West",
     "für die Feedback-Empfänger*innen",
-    "für Geschlechter-<br>gerechtigkeit",
+    "für Geschlechter&shy;gerechtigkeit",
     "für das Küchenteam",
     "am Morgen danach",
     "für Alt-Roverrunden",
@@ -238,3 +238,5 @@ var parts4 = [
     "für einen Jugendverband",
     "für den BDKJ",
 ];
+
+
