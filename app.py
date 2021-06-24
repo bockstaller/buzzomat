@@ -16,8 +16,10 @@ import os
 load_dotenv()
 
 if "caching" in os.environ:
-    caching = os.getenv("caching")
+    caching = os.getenv("caching") == True
+
 else:
+
     raise EnvironmentError
 
 if "baseurl" in os.environ:
@@ -95,10 +97,13 @@ HoneyMiddleware(app, db_events=False)
 @app.route("/img/<string:buzz_id>.jpg")
 async def test(buzz_id):
     beeline.add_context({"buzz_id": buzz_id})
+    filename = "img/" + buzz_id + ".jpg"
 
     if caching:
+
         try:
-            return send_file("img/" + buzz_id + ".jpg")
+
+            return send_file(filename)
         except:
             pass
 
@@ -108,13 +113,17 @@ async def test(buzz_id):
         handleSIGHUP=False,
         options={"args": ["--no-sandbox"]},
     )
+    try:
+        os.remove("./" + filename)
+    except OSError:
+        pass
     page = await browser.newPage()
-    await page.setViewport({"width": 700, "height": 600})
+    await page.setViewport({"width": 1000, "height": 800})
     url = "http://127.0.0.1:5000/" + buzz_id
     await page.goto(url)
-    await page.screenshot({"path": "img/" + buzz_id + ".jpg"})
+    await page.screenshot({"path": filename})
     await browser.close()
-    return send_file("img/" + buzz_id + ".jpg")
+    return send_file(filename)
 
 
 @app.route("/<string:buzz_id>")

@@ -48,7 +48,7 @@ var parts1 = [
     "Flinke Hände, flinke Füße ist",
     "Jede Morgenrunde ist",
     "Westernohe ist",
-    "Der BDKJ ist",
+    "Die Gruppenkinder sind",
     "Die DPSG ist",
     "Die DPSG Facebookgruppe ist",
     "Die Discord-Rover sind",
@@ -76,6 +76,14 @@ var parts1 = [
     "Die Projektleitung kann",
     "Die Roverstufe ist",
     "Stufen&shy;mitbestimmung ist",
+    "Das Sommerlager ist",
+    "Der lange Abend ist",
+    "Der Doppelknoten ist",
+    "Die Tannenbaum-Kluft ist",
+    "Die Nachtwache ist",
+    "Der Stufenübertritt ist",
+    "Knotenkunde ist",
+    "Abspannseile sind",
 ];
 
 var parts2 = [
@@ -131,7 +139,11 @@ var parts2 = [
     "irgendwie",
     "streng genommen",
     "ganz objektiv",
-    "mitnichten"
+    "mitnichten",
+    "beim Küchendienst",
+    "beim Spüldienst",
+    "beim Kloputzdienst",
+
 ];
 
 var parts3 = [
@@ -186,7 +198,8 @@ var parts3 = [
     "ein schönes Scheitern",
     "ein Kothenkreuz",
     "eine Offenbarung",
-    "die größte Innovation"
+    "die größte Innovation",
+    "keine Stufe",
 ];
 
 var parts4 = [
@@ -236,7 +249,9 @@ var parts4 = [
     "für die Zukunft",
     "für alles",
     "für einen Jugendverband",
-    "für den BDKJ",
+    "für den Küchendienst",
+    "für den Kloputzdienst",
+    "für die Morgenrunde",
 ];
 
 
