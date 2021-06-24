@@ -97,15 +97,18 @@ HoneyMiddleware(app, db_events=False)
 @app.route("/img/<string:buzz_id>.jpg")
 async def test(buzz_id):
     beeline.add_context({"buzz_id": buzz_id})
+    beeline.add_context({"socialPreview": True})
     filename = "img/" + buzz_id + ".jpg"
 
     if caching:
-
+        beeline.add_context({"caching": True})
         try:
 
             return send_file(filename)
         except:
             pass
+    else:
+        beeline.add_context({"caching": False})
 
     browser = await launch(
         handleSIGINT=False,
@@ -128,6 +131,8 @@ async def test(buzz_id):
 
 @app.route("/<string:buzz_id>")
 def index(buzz_id):
+
+    beeline.add_context({"socialPreview": False})
     beeline.add_context({"buzz_id": buzz_id})
     print(baseurl)
     print(buzz_id)
@@ -142,6 +147,7 @@ def index(buzz_id):
 
 @app.route("/")
 def index_empty():
+    beeline.add_context({"socialPreview": False})
     beeline.add_context({"buzz_id": " "})
     print(default_content)
 
