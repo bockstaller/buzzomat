@@ -46,21 +46,6 @@ else:
 Path("img").mkdir(parents=True, exist_ok=True)
 
 
-sentry_sdk.init(
-    dsn=dsn,
-    integrations=[FlaskIntegration()],
-    # Set traces_sample_rate to 1.0 to capture 100%
-    # of transactions for performance monitoring.
-    # We recommend adjusting this value in production.
-    traces_sample_rate=1.0,
-    # By default the SDK will try to use the SENTRY_RELEASE
-    # environment variable, or infer a git commit
-    # SHA as release, however you may want to set
-    # something more human-readable.
-    # release="myapp@1.0.0",
-)
-
-
 if os.getenv("FLASK_ENV") != "development":
     from uwsgidecorators import postfork
 
@@ -75,6 +60,20 @@ if os.getenv("FLASK_ENV") != "development":
             debug=False,  # defaults to False. if True, data doesn't get sent to Honeycomb
         )
 
+    sentry_sdk.init(
+        dsn=dsn,
+        integrations=[FlaskIntegration()],
+        # Set traces_sample_rate to 1.0 to capture 100%
+        # of transactions for performance monitoring.
+        # We recommend adjusting this value in production.
+        traces_sample_rate=1.0,
+        # By default the SDK will try to use the SENTRY_RELEASE
+        # environment variable, or infer a git commit
+        # SHA as release, however you may want to set
+        # something more human-readable.
+        # release="myapp@1.0.0",
+    )
+
 
 else:
     beeline.init(
@@ -82,7 +81,7 @@ else:
         # The name of your app is a good choice to start with
         dataset="vocomat",
         service_name="vocomat-app",
-        debug=False,  # defaults to False. if True, data doesn't get sent to Honeycomb
+        debug=True,  # defaults to False. if True, data doesn't get sent to Honeycomb
     )
 
 
