@@ -77,6 +77,19 @@
               <div class="bullet" style="left:568px"></div>
               <div class="bullet" style="left:604px"></div>
               <div class="bullet" style="left:642px"></div>
+              <div class="subtext">
+                <svg width="1500" height="1500" >
+                  <image xlink:href="static/Artboard1.svg" width="1500" height="1500"/>
+                </svg>
+              </div>
+              <div class="pull-arrow">
+                <svg width="450" height="450" >
+                  <image xlink:href="static/Artboard2.svg" width="450" height="450"/>
+                </svg>
+              </div>
+              <div class="pull-arrow-text">
+               Ziehen
+              </div>
             </div>
 
             <div class="slots">
@@ -90,21 +103,20 @@
             <svg width="950" height="500">
               <image xlink:href="static/machine.svg" width="950" height="500"/>
             </svg>
-
-            <div class="btn-group btn-group-justified btn-group-casino" role="group">
-              <div id="slotMachineButtonCopyText" type="button" class="btn btn-primary btn-lg">Spruch kopieren</div>
-              <div id="slotMachineButtonCopyURL" type="button" class="btn btn-primary btn-lg">Perma-Link kopieren</div>
-              <a id="slotMachineButtonTwitter" target="_blank" type="button" class="btn btn-primary btn-lg twitter-share-button">Spruch twittern</a>
-            </div>
           </div>
 
 
         </div>
       </div>
 
-      <div class="notification">
 
-      </div>
+
+      <div class="notification">      </div>
+      <div class="btn-group btn-group-justified btn-group-casino" role="group">
+              <div id="slotMachineButtonCopyText" type="button" class="btn btn-primary btn-lg">Spruch kopieren</div>
+              <div id="slotMachineButtonCopyURL" type="button" class="btn btn-primary btn-lg">Perma-Link kopieren</div>
+              <a id="slotMachineButtonTwitter" target="_blank" href="https://voco.rover.de" type="button" class="btn btn-primary btn-lg twitter-share-button">Anmelden</a>
+        </div>
     </div>
     <div class="push"></div>
     <div class="footer">
@@ -372,23 +384,7 @@
           }
         });
 
-        $('#slotMachineButtonTwitter').click(function(){
-           var t = [];
-           t.push(parts1[machine1.active]);
-           t.push(parts2[machine2.active]);
-           t.push(parts3[machine3.active]);
-           t.push(parts4[machine4.active]);
-           var text = t.join(" ").replace(/&shy;/g,"");
 
-   				 var link = (
-   				  (machine1.active*parts2.length*parts3.length*parts4.length) +
-            (machine2.active*parts3.length*parts4.length) +
-            (machine3.active*parts4.length) +
-            (machine4.active)
-           );
-
-           window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(text+' #vocomat #dpsg '+window.location.href),'twitter','width=500,height=350');
-        });
 
         $(document).keydown(function (e){
           var p = parseInt(window.location.hash.replace(/[^0-9]*/g,""));

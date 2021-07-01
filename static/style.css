@@ -29,21 +29,21 @@ html {
 }
 body {
   height:100%;
-  width:100%;
-
+  overflow-x: hidden;
+  overflow-x: hidden;
   background-color: rgb(245, 173, 186);
 
 }
 
 .background{
-
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position:fixed;
   height: 100%;
   width:100%;
-  left:0;
-  top:0;
+  left:0%;
+  top:0%;
   z-index:-100;
 }
 
@@ -187,6 +187,8 @@ h1{
     100% { opacity: .2;}
 }
 
+
+
 .slots{
   position:relative;
   display: flex;
@@ -209,6 +211,9 @@ h1{
 .handle {
   background:#333;
   border-radius:20px;
+  border-color:#fff;
+  border
+  border-width: 5px;
   transition-property: height, border-radius,bottom;
   transition-duration: 0.2s;
   transition-timing-function: linear;
@@ -251,11 +256,40 @@ h1{
 .bullet:nth-child(17) { animation-delay: 1.6s; }
 .bullet:nth-child(18) { animation-delay: 1.7s; }
 
+.subtext{
+  position:absolute;
+  left:-900px;
+  top: -430px;
+  z-index:-10;
+}
+
+.pull-arrow{
+  position:absolute;
+  left:390px;
+  top: -530px;
+  z-index:-10;
+  overflow-x: hidden;
+
+}
+
+.pull-arrow-text{
+  position:absolute;
+  color:white;
+  font-size: 30px;
+  font-family: 'Roboto', sans-serif;
+  font-weight:700;
+  z-index:10;
+  left:700px;
+  top:-365px;
+  transform: rotate(40deg);
+}
+
 .notification{
   position:relative;
 
-  top:-100px;
-  width:60%;
+  top:-150px;
+  min-width: 60%;
+  width:80%;
   margin: auto;
   text-align:center;
   font-size:80%;
