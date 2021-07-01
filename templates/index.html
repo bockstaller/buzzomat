@@ -45,8 +45,7 @@
 </head>
 
 <body>
-  <div class="background">
-  </div>
+
     <div class="wrapper">
       <div class="heading">
           <h1> <b>voco</b>-o-mat </h1>
@@ -128,14 +127,34 @@
     <div class="clear">
     </div>
 
+  <div class="background">
+  </div>
+  <div class="background">
+  </div>
+
 		<script>
         function set_background(text, image) {
           $('div.notification:first').html(text)
 
-          $('div.background:first').css('background-image', 'none');
+          $('div.background').first().css('z-index', '-110');
+
           if (image != ""){
-            $('div.background:first').css('background-image', 'url(' + image + ')');
+            $('div.background').first().css('background-image', 'url(' + image + ')');
+          }else{
+            $('div.background').first().css('background-image', 'none');
           }
+
+          setTimeout(function(){  $('div.background').first().css('z-index', '-90'); },200);
+
+          setTimeout(function(){
+          if (image != ""){
+            $('div.background').last().css('background-image', 'url(' + image + ')');
+          }else{
+            $('div.background').last().css('background-image', 'none');
+          }
+          },400);
+
+
         };
 
         function update_background(machine1, machine2, machine3, machine4) {
@@ -279,7 +298,8 @@
            }
            foundHash = link;
            setTimeout(function(){ waitForStop = false; },1000);
-           update_background(machine1, machine2, machine3, machine4);
+
+
 					},500);
         }
 
