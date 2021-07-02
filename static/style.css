@@ -322,7 +322,7 @@ h1{
   font-family: 'Roboto', sans-serif;
   font-size:18px;
   backdrop-filter: blur(2px) brightness(0.8);
-
+  border-radius: 25px;
 }
 
 
