@@ -11,7 +11,7 @@ var backgrounds = [
     },
     {
         keys: ["Morgenimpuls", "Spiri", "spirituelle", "Ostern"],
-        texts: [""],
+        texts: ["Ostern mit 1500 Rover*innen feiern"],
         images: [""]
     },
     {
@@ -21,27 +21,22 @@ var backgrounds = [
     },
     {
         keys: ["Discord", "Rot im Alltag"],
-        texts: [""],
+        texts: ["Die gesamte Roverstufe mal wieder in echt sehen!"],
         images: [""]
     },
     {
         keys: ["Inhalt", "Projekt",],
-        texts: [],
+        texts: ["Projektpartner*innen gesucht! Ideen für 2tägige Projekte mit 30 Rover*innen an <a href='mailto: inhalt.rovervoco@dpsg.de'>inhalt.rovervoco@dpsg.de</a>",],
         images: []
     },
     {
         keys: ["Anmeldefrist", "Muttizettel", "NaMi"],
-        texts: [],
+        texts: ["Die Anmeldung ist bis zum 3.10. geöffnet!", "Je mehr angemeldet sind, umso günstiger wird es."],
         images: []
     },
     {
         keys: ["Klötzchen", "Leiter", "Stammesebene", "Alt-Roverrunden"],
-        texts: [],
-        images: []
-    },
-    {
-        keys: ["Rovermoot",],
-        texts: [],
+        texts: ["Nicht mehr in der Roverstufe? Mach doch deine Roverrunde drauf aufmerksam!", "Nicht mehr in der Roverstufe? Fahr doch als Helfer*in mit!"],
         images: []
     },
     {

@@ -305,9 +305,9 @@ h1{
   font-weight: 700;
   line-height: 100%;
 
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px) brightness(0.8);
   border-radius: 25px;
-
+  padding: 10px;
 }
 
 .footer{
@@ -321,7 +321,7 @@ h1{
   padding-bottom:20px;
   font-family: 'Roboto', sans-serif;
   font-size:18px;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px) brightness(0.8);
 
 }
 
