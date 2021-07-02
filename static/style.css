@@ -69,8 +69,11 @@ body {
 
 .heading{
   position:relative;
-  top: -80px;
+  top: 10px;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 svg{
@@ -79,9 +82,8 @@ svg{
 }
 
 h1{
-  position:relative;
-  top:170px;
-  left:-10px;
+  position:absolute;
+  top:60px;
   transform: rotate(-15deg);
 	font-size: 70px;
   text-align: center;
@@ -94,7 +96,7 @@ h1{
  */
 #casino {
   position: relative;
-  top: -200px;
+  top: -170px;
   width:100%;
 }
 
@@ -261,8 +263,8 @@ h1{
 
 .subtext{
   position:absolute;
-  left:-900px;
-  top: -430px;
+  left:-950px;
+  top: -450px;
   z-index:-10;
 }
 
@@ -282,9 +284,9 @@ h1{
   font-family: 'Roboto', sans-serif;
   font-weight:700;
   z-index:10;
-  left:700px;
-  top:-365px;
-  transform: rotate(40deg);
+  left:750px;
+  top:-300px;
+  transform: rotate(65deg);
 }
 
 .notification{
@@ -321,4 +323,15 @@ h1{
   font-size:18px;
   backdrop-filter: blur(2px);
 
+}
+
+
+.preload_image{
+  visibility: hidden;
+  position: absolute;
+  z-index:-1000;
+  width:0px;
+  height:0px;
+  top:0px;
+  left:0px;
 }
