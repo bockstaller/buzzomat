@@ -44,7 +44,7 @@ var parts1 = [
     "Die Mittendrin war",
     "Ein Mitternachts&shy;snack ist",
     "Ein Arbeitskreis ist",
-    "6,50€ prot Tag und Teilnehmer*in",
+    "6,50€ pro Tag und Teilnehmer*in",
     "Flinke Hände, flinke Füße ist",
     "Jede Morgenrunde ist",
     "Westernohe ist",

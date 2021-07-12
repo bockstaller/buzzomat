@@ -21,8 +21,8 @@ var backgrounds = [
     },
     {
         keys: ["Discord", "Rot im Alltag"],
-        texts: ["Die gesamte Roverstufe mal wieder in echt sehen!"],
-        images: [""]
+        texts: ["Hey <a href='https://discord.gg/gHmE9GQznY'>Discord-Server</a>, was soll hier denn stehen?"],
+        images: ["static/background/discord2.png"]
     },
     {
         keys: ["Inhalt", "Projekt",],
