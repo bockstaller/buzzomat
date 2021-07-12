@@ -317,10 +317,12 @@ h1{
 
   margin:auto;
   text-align:center;
+
   font-size:80%;
   padding-bottom:20px;
   font-family: 'Roboto', sans-serif;
   font-size:18px;
+  height:auto;
   backdrop-filter: blur(2px) brightness(0.8);
   border-radius: 25px;
 }
