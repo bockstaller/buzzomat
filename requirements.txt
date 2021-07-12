@@ -5,7 +5,7 @@ blinker==1.4
 certifi==2021.5.30
 chardet==4.0.0
 click==8.0.1
-Flask==2.0.1
+Flask[async]==2.0.1
 honeycomb-beeline==2.17.0
 idna==2.10
 importlib-metadata==2.1.1

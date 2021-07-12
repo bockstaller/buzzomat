@@ -6,7 +6,7 @@ from sentry_sdk.integrations.flask import FlaskIntegration
 from pyppeteer import launch
 from pathlib import Path
 
-
+import asyncio
 from dotenv import load_dotenv
 import beeline
 from beeline.middleware.flask import HoneyMiddleware
@@ -93,22 +93,7 @@ app = Flask(
 HoneyMiddleware(app, db_events=False)
 
 
-@app.route("/img/<string:buzz_id>.jpg")
-async def test(buzz_id):
-    beeline.add_context({"buzz_id": buzz_id})
-    beeline.add_context({"socialPreview": True})
-    filename = "img/" + buzz_id + ".jpg"
-
-    if caching:
-        beeline.add_context({"caching": True})
-        try:
-
-            return send_file(filename)
-        except:
-            pass
-    else:
-        beeline.add_context({"caching": False})
-
+async def capture(filename, buzz_id):
     browser = await launch(
         handleSIGINT=False,
         handleSIGTERM=False,
@@ -125,6 +110,26 @@ async def test(buzz_id):
     await page.goto(url)
     await page.screenshot({"path": filename})
     await browser.close()
+
+
+@app.route("/img/<string:buzz_id>.jpg")
+async def image_generation(buzz_id):
+    beeline.add_context({"buzz_id": buzz_id})
+    beeline.add_context({"socialPreview": True})
+    filename = "img/" + buzz_id + ".jpg"
+
+    if caching:
+        beeline.add_context({"caching": True})
+        try:
+
+            return send_file(filename)
+        except:
+            pass
+    else:
+        beeline.add_context({"caching": False})
+
+    await capture(filename, buzz_id)
+
     return send_file(filename)
 
 
