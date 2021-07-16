@@ -141,7 +141,7 @@ async def image_generation(buzz_id):
 
 @beeline.traced("index")
 @app.route("/<string:buzz_id>")
-async def index(buzz_id):
+def index(buzz_id):
 
     beeline.add_context({"socialPreview": False})
     beeline.add_context({"buzz_id": buzz_id})
