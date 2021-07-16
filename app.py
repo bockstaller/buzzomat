@@ -99,6 +99,7 @@ async def capture(filename, buzz_id):
             handleSIGINT=False,
             handleSIGTERM=False,
             handleSIGHUP=False,
+            options={"args": ["--no-sandbox"]},
         )
         try:
             os.remove("./" + filename)
