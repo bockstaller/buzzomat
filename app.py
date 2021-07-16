@@ -116,7 +116,7 @@ sync_capture = app.async_to_sync(capture)
 
 
 @app.route("/img/<string:buzz_id>.jpg")
-def image_generation(buzz_id):
+async def image_generation(buzz_id):
     beeline.add_context({"buzz_id": buzz_id})
     beeline.add_context({"socialPreview": True})
     filename = "img/" + buzz_id + ".jpg"
@@ -131,7 +131,7 @@ def image_generation(buzz_id):
     else:
         beeline.add_context({"caching": False})
 
-    sync_capture(filename, buzz_id)
+    await capture(filename, buzz_id)
 
     return send_file(filename)
 
