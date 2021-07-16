@@ -1,4 +1,5 @@
 from flask import Flask, send_file, render_template, request
+from flask.helpers import url_for
 import sentry_sdk
 
 from sentry_sdk.integrations.flask import FlaskIntegration
@@ -13,6 +14,7 @@ from beeline.middleware.flask import HoneyMiddleware
 import os
 
 from celery import Celery
+from werkzeug.utils import redirect
 
 
 load_dotenv()
@@ -74,8 +76,13 @@ app = Flask(
 )
 app.config.update(
     CELERY_BROKER_URL=broker,
+    CELERY_BACKEND_URL=broker,
 )
-celery = Celery(app.name, broker=app.config["CELERY_BROKER_URL"])
+celery = Celery(
+    app.name,
+    broker=app.config["CELERY_BROKER_URL"],
+    backend=app.config["CELERY_BACKEND_URL"],
+)
 celery.conf.update(app.config)
 
 
@@ -127,21 +134,19 @@ async def image_generation(buzz_id):
     beeline.add_context({"buzz_id": buzz_id})
     beeline.add_context({"socialPreview": True})
     filename = "img/" + buzz_id + ".jpg"
-    background_image_generation.delay(buzz_id)
+    result = background_image_generation.delay(buzz_id)
+    result.get()
     return send_file(filename)
 
 
 @beeline.traced("index")
 @app.route("/<string:buzz_id>")
 def index(buzz_id, local=False):
-
     beeline.add_context({"socialPreview": False})
     beeline.add_context({"buzz_id": buzz_id})
     print(local)
     if not local:
-        print("enter background")
         promise = background_image_generation.delay(buzz_id)
-        print(promise)
 
     url = baseurl + "/" + buzz_id
     image = baseurl + "/img/" + buzz_id + ".jpg"
@@ -155,7 +160,7 @@ def index(buzz_id, local=False):
 @beeline.traced("index")
 @app.route("/loc/<string:buzz_id>")
 def index_local(buzz_id):
-    index(buzz_id, local=True)
+    return redirect(url_for("index_empty", buzz_id=buzz_id, local=True))
 
 
 @app.route("/")
