@@ -1,6 +1,7 @@
 from flask import Flask, send_file, render_template, request
 from flask.helpers import url_for
 import sentry_sdk
+import signal, psutil, os
 
 from sentry_sdk.integrations.flask import FlaskIntegration
 
@@ -111,7 +112,19 @@ async def capture(filename, buzz_id):
         raise e
     finally:
         await browser.close()
+
     return
+
+
+def kill_child_processes(parent_pid, sig=signal.SIGTERM):
+    try:
+        parent = psutil.Process(parent_pid)
+    except psutil.NoSuchProcess:
+        return
+    children = parent.children(recursive=True)
+    print(children)
+    for process in children:
+        process.send_signal(sig)
 
 
 @celery.task
@@ -125,6 +138,7 @@ def background_image_generation(buzz_id):
     else:
         asyncio.get_event_loop().run_until_complete(capture(filename, buzz_id))
 
+    kill_child_processes(os.getpid())
     return filename
 
 
