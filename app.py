@@ -19,9 +19,7 @@ load_dotenv()
 
 if "caching" in os.environ:
     caching = os.getenv("caching") == True
-
 else:
-
     raise EnvironmentError
 
 if "baseurl" in os.environ:
@@ -53,18 +51,6 @@ Path("img").mkdir(parents=True, exist_ok=True)
 
 
 if os.getenv("FLASK_ENV") != "development":
-    from uwsgidecorators import postfork
-
-    @postfork
-    def init_beeline():
-
-        beeline.init(
-            writekey=beeline_api_key,
-            # The name of your app is a good choice to start with
-            dataset="vocomat",
-            service_name="vocomat-app",
-            debug=False,  # defaults to False. if True, data doesn't get sent to Honeycomb
-        )
 
     sentry_sdk.init(
         dsn=dsn,
@@ -78,16 +64,6 @@ if os.getenv("FLASK_ENV") != "development":
         # SHA as release, however you may want to set
         # something more human-readable.
         # release="myapp@1.0.0",
-    )
-
-
-else:
-    beeline.init(
-        writekey=beeline_api_key,
-        # The name of your app is a good choice to start with
-        dataset="vocomat",
-        service_name="vocomat-app",
-        debug=True,  # defaults to False. if True, data doesn't get sent to Honeycomb
     )
 
 
