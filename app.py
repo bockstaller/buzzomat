@@ -1,4 +1,4 @@
-from flask import Flask, send_file, render_template
+from flask import Flask, send_file, render_template, request
 import sentry_sdk
 
 from sentry_sdk.integrations.flask import FlaskIntegration
@@ -11,6 +11,8 @@ from dotenv import load_dotenv
 import beeline
 from beeline.middleware.flask import HoneyMiddleware
 import os
+
+from celery import Celery
 
 
 load_dotenv()
@@ -42,6 +44,10 @@ if "dsn" in os.environ:
 else:
     raise EnvironmentError
 
+if "broker" in os.environ:
+    broker = os.getenv("broker")
+else:
+    raise EnvironmentError
 
 Path("img").mkdir(parents=True, exist_ok=True)
 
@@ -90,6 +96,13 @@ app = Flask(
     static_url_path="/static",
     static_folder="static",
 )
+app.config.update(
+    CELERY_BROKER_URL=broker,
+)
+celery = Celery(app.name, broker=app.config["CELERY_BROKER_URL"])
+celery.conf.update(app.config)
+
+
 HoneyMiddleware(app, db_events=False)
 
 
@@ -108,13 +121,28 @@ async def capture(filename, buzz_id):
             pass
         page = await browser.newPage()
         await page.setViewport({"width": 1000, "height": 800})
-        url = "http://127.0.0.1:5000/" + buzz_id
+        url = "http://127.0.0.1:5000/loc/" + buzz_id
         await page.goto(url)
         await page.screenshot({"path": filename})
     except Exception as e:
         raise e
     finally:
         await browser.close()
+    return
+
+
+@celery.task
+@beeline.traced("run_preview")
+def background_image_generation(buzz_id):
+    beeline.add_context({"buzz_id": buzz_id})
+    beeline.add_context({"socialPreview": True})
+    filename = "img/" + buzz_id + ".jpg"
+    if os.path.isfile("./" + filename):
+        return
+    else:
+        asyncio.get_event_loop().run_until_complete(capture(filename, buzz_id))
+
+    return filename
 
 
 @beeline.traced("return_preview")
@@ -123,28 +151,19 @@ async def image_generation(buzz_id):
     beeline.add_context({"buzz_id": buzz_id})
     beeline.add_context({"socialPreview": True})
     filename = "img/" + buzz_id + ".jpg"
-
-    if caching:
-        beeline.add_context({"caching": True})
-        try:
-
-            return send_file(filename)
-        except:
-            pass
-    else:
-        beeline.add_context({"caching": False})
-
-    await capture(filename, buzz_id)
-
+    background_image_generation.delay(buzz_id)
     return send_file(filename)
 
 
 @beeline.traced("index")
 @app.route("/<string:buzz_id>")
-def index(buzz_id):
+def index(buzz_id, local=False):
 
     beeline.add_context({"socialPreview": False})
     beeline.add_context({"buzz_id": buzz_id})
+    if not local:
+        background_image_generation.delay(buzz_id)
+
     url = baseurl + "/" + buzz_id
     image = baseurl + "/img/" + buzz_id + ".jpg"
     title = "voco-o-mat"
@@ -152,6 +171,12 @@ def index(buzz_id):
     return render_template(
         "index.html", url=url, image=image, title=title, description=description
     )
+
+
+@beeline.traced("index")
+@app.route("/loc/<string:buzz_id>")
+def index_local(buzz_id):
+    index(buzz_id, local=True)
 
 
 @app.route("/")
