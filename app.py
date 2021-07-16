@@ -93,6 +93,7 @@ app = Flask(
 HoneyMiddleware(app, db_events=False)
 
 
+@beeline.traced("generate_preview")
 async def capture(filename, buzz_id):
     try:
         browser = await launch(
@@ -116,6 +117,7 @@ async def capture(filename, buzz_id):
         await browser.close()
 
 
+@beeline.traced("return_preview")
 @app.route("/img/<string:buzz_id>.jpg")
 async def image_generation(buzz_id):
     beeline.add_context({"buzz_id": buzz_id})
@@ -137,13 +139,12 @@ async def image_generation(buzz_id):
     return send_file(filename)
 
 
+@beeline.traced("index")
 @app.route("/<string:buzz_id>")
-def index(buzz_id):
+async def index(buzz_id):
 
     beeline.add_context({"socialPreview": False})
     beeline.add_context({"buzz_id": buzz_id})
-    print(baseurl)
-    print(buzz_id)
     url = baseurl + "/" + buzz_id
     image = baseurl + "/img/" + buzz_id + ".jpg"
     title = "voco-o-mat"
@@ -154,9 +155,8 @@ def index(buzz_id):
 
 
 @app.route("/")
-def index_empty():
+async def index_empty():
     beeline.add_context({"socialPreview": False})
     beeline.add_context({"buzz_id": " "})
-    print(default_content)
 
     return index(default_content)
