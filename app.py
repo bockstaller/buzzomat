@@ -140,7 +140,8 @@ def index(buzz_id, local=False):
     print(local)
     if not local:
         print("enter background")
-        background_image_generation.delay(buzz_id)
+        promise = background_image_generation.delay(buzz_id)
+        print(promise)
 
     url = baseurl + "/" + buzz_id
     image = baseurl + "/img/" + buzz_id + ".jpg"
