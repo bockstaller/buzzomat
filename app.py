@@ -94,25 +94,25 @@ HoneyMiddleware(app, db_events=False)
 
 
 async def capture(filename, buzz_id):
-    browser = await launch(
-        handleSIGINT=False,
-        handleSIGTERM=False,
-        handleSIGHUP=False,
-        options={"args": ["--no-sandbox"]},
-    )
     try:
-        os.remove("./" + filename)
-    except OSError:
-        pass
-    page = await browser.newPage()
-    await page.setViewport({"width": 1000, "height": 800})
-    url = "http://127.0.0.1:5000/" + buzz_id
-    await page.goto(url)
-    await page.screenshot({"path": filename})
-    await browser.close()
-
-
-sync_capture = app.async_to_sync(capture)
+        browser = await launch(
+            handleSIGINT=False,
+            handleSIGTERM=False,
+            handleSIGHUP=False,
+        )
+        try:
+            os.remove("./" + filename)
+        except OSError:
+            pass
+        page = await browser.newPage()
+        await page.setViewport({"width": 1000, "height": 800})
+        url = "http://127.0.0.1:5000/" + buzz_id
+        await page.goto(url)
+        await page.screenshot({"path": filename})
+    except Exception as e:
+        raise e
+    finally:
+        await browser.close()
 
 
 @app.route("/img/<string:buzz_id>.jpg")
