@@ -4,6 +4,7 @@ import sentry_sdk
 import signal, psutil, os
 
 from sentry_sdk.integrations.flask import FlaskIntegration
+from sentry_sdk.integrations.redis import RedisIntegration
 
 from pyppeteer import launch
 from pathlib import Path
@@ -57,7 +58,7 @@ if os.getenv("FLASK_ENV") != "development":
 
     sentry_sdk.init(
         dsn=dsn,
-        integrations=[FlaskIntegration()],
+        integrations=[FlaskIntegration(), RedisIntegration()],
         # Set traces_sample_rate to 1.0 to capture 100%
         # of transactions for performance monitoring.
         # We recommend adjusting this value in production.
