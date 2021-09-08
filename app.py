@@ -159,9 +159,6 @@ async def image_generation(buzz_id):
 def index(buzz_id, local=False):
     beeline.add_context({"socialPreview": False})
     beeline.add_context({"buzz_id": buzz_id})
-    print(local)
-    if local:
-        promise = background_image_generation.delay(buzz_id)
 
     url = baseurl + "/" + buzz_id
     image = baseurl + "/img/" + buzz_id + ".jpg"
