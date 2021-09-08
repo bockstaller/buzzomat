@@ -160,7 +160,7 @@ def index(buzz_id, local=False):
     beeline.add_context({"socialPreview": False})
     beeline.add_context({"buzz_id": buzz_id})
     print(local)
-    if not local:
+    if local:
         promise = background_image_generation.delay(buzz_id)
 
     url = baseurl + "/" + buzz_id
@@ -175,7 +175,7 @@ def index(buzz_id, local=False):
 @beeline.traced("index")
 @app.route("/loc/<string:buzz_id>")
 def index_local(buzz_id):
-    return redirect(url_for("index_empty", buzz_id=buzz_id, local=True))
+    return redirect(url_for("index", buzz_id=buzz_id, local=True))
 
 
 @app.route("/")
