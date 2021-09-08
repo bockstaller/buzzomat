@@ -107,7 +107,7 @@ async def capture(filename, buzz_id):
         page = await browser.newPage()
         await page.setViewport({"width": 1000, "height": 800})
         url = "http://127.0.0.1:5000/loc/" + buzz_id
-        await page.goto(url)
+        await page.goto(url, {"waitUntil": "networkidle0"})
         await page.screenshot({"path": filename})
     except Exception as e:
         raise e
